@@ -20,3 +20,5 @@ char	*ft_strcpy(char *dest, char *src)
 //   ft_strcpy(dest, src);
 //   printf("after function : %s\n", dest);
 // }
+
+//Copies over src to dest
