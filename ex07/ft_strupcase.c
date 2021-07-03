@@ -1,6 +1,6 @@
 char	*ft_strupcase(char *str)
 {
-	unsigned int i;
+	unsigned int	i;
 
 	i = 0;
 	while (str[i] != '\0')
