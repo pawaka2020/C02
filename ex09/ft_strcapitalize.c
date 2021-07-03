@@ -1,34 +1,65 @@
-char	*ft_strcapitalize(char *str)
-{
-	unsigned int	i;
+int ft_small(char c){
+  int i;
 
-	if (str[0] != '\0' && str[0] >= 'a' && str[0] <= 'z')
-	{
-		str[0] -= 32;
-	}
-	i = 1;
-	while (str[i] != '\0')
-	{
-		if (((str[i] >= 'a' && str[i] <= 'z') || (str[i] >= 'A' && str[i] <= 'Z')) && (str[i - 1] < '0' || (str[i - 1] > '9' && str[i - 1] < 'A') || (str[i - 1] > 'Z' && str[i - 1] < 'a') || str[i - 1] > 'z'))
-		{
-			if (str[i] >= 'a' && str[i] <= 'z')
-      			{
-				str[i] -= 32;
-			}	
-		}
-		else if (str[i] >= 'A' && str[i] <= 'Z')
-		{
-			str[i] += 32;
-		}	
-		++i;
-	}
-	return (str);
+  if ((c >= 'a') && (c <= 'z'))
+  {
+    i = 1;
+  }
+  else
+  {
+    i = 0;
+  }
+  return i;
+}
+
+int ft_big(char c)
+{
+  int i;
+
+  if ((c >= 'A') && (c <= 'Z'))
+  {
+    i = 1;
+  }
+  else
+  {
+    i = 0;
+  }
+  return i;
+}
+
+int ft_wordstart(char c){
+  int i;
+
+  if ((ft_small(c) == 0) && (ft_big(c) == 0))
+  {
+    i = 1;
+  }
+  else
+  {
+    i = 0;
+  }
+  return i;
+}
+
+char *ft_strcapitalize(char *str)
+{
+  int i;
+
+  i = -1;
+  while (i++, str[i])
+  {
+    if ((ft_small(str[i]) == 1) && (ft_wordstart(str[i-1]) == 1))
+    {
+      str[i] -= 32;
+    }
+  }
+  return str;
 }
 
 // #include <stdio.h>
 // int main(void)
 // {
-//   char input[] = "hello";
-//   ft_strcapitalize(input);
-//   printf("%s", input);
+//   char str[] = "salut, comment tu vas ? 42mots quarante-deux; cinquante+et+un" ;
+//   ft_strcapitalize(str);
+//   printf("%s\n", str);
 // }
